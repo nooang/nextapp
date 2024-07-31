@@ -10,7 +10,7 @@ export default function Update() {
   const params = useParams();
   const id = params.id;
   useEffect(() => {
-    fetch(`${[process.env.NEXT_PUBLIC_API_URL]}topics/${id}`, {next: {revalidate: 0}})
+    fetch(`http://localhost:9999/topics/${id}`, {next: {revalidate: 0}})
     .then(response => response.json())
     .then(result => {
       setTitle(result.title);
@@ -29,7 +29,7 @@ export default function Update() {
         },
         body: JSON.stringify({title, body})
       }
-      fetch(`${[process.env.NEXT_PUBLIC_API_URL]}topics/${id}`, options, {next: {revalidate: 0}})
+      fetch(`http://localhost:9999/topics/${id}`, options, {next: {revalidate: 0}})
       .then(response => response.json())
       .then(result => {
         const lastId = result.id;

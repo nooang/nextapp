@@ -17,7 +17,7 @@ export default function Create() {
         },
         body: JSON.stringify({title, body})
       }
-      fetch(`${[process.env.NEXT_PUBLIC_API_URL]}topics`, options, {next: {revalidate: 0}})
+      fetch(`http://localhost:9999/topics`, options, {next: {revalidate: 0}})
       .then(response => response.json())
       .then(result => {
         const lastId = result.id
